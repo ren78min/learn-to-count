@@ -2,52 +2,44 @@
 <head>
 <style>
 .num-button {
-	padding:	10px 10px;
 	text-align: 	center;
-	font-size: 	80px;
-	margin:		5px 5px 5px 5px;
+	font-family:	arial;
+	font-size: 	90px;
 	width:		100px;
 	height:		150px;
+	margin:		4px 4px 4px 4px;
 }
-
 .num-display {
 	text-align:	center;
-	margin:		10px 10px;
-	padding:	10px 10px 10px 10px;
+	font-family:	arial;
 	font-size:	360px;
+	width:		300px;
+	margin:		5px 5px 5px 5px;
 }
-
 .img-button {
+	text-align:	center;
 	width:		100px;
 	height:		100px;
-	padding:	10px;
-	text-align:	center;
+	margin:		5px 5px 0px 5px;
 }
-
 .img-button img {
 	height:		100px;
 }
-
 .img-display {
 	width:		200px;
 	height:		200px;
 	text-align:	center;
 }
-
 .img-display img {
 	height: 	200px;	
 }
-
 </style>
 
 <script>
-
-var picArray = ["flower.jpg", "sun.png", "apple.jpg", "heart.png", 
-		"star.png", "duck.jpg"];
-
+var picArray = ["flower.jpg", "apple.jpg", "heart.png", 
+		"sun.png", "star.png", "duck.png"];
 var pic = picArray[0];
 var num = 1;
-
 var initPicBar = function(){
 	var res = "<table>";
 	for(var i in picArray){
@@ -58,20 +50,16 @@ var initPicBar = function(){
 			"') /></div></td></tr>";
 	}
 	res += "</table>";
-
 	document.getElementById("picBar").innerHTML = res;
 };
-
 var initNumBar = function(){
 	var res = "<table>";
         for(var i = 0; i < 10; i++){
                 res += "<td><button class='num-button' onclick=setNum("+i+")>"+i+"</button></td>";
         }
 	res += "</table>"
-
         document.getElementById("numBar").innerHTML = res;
 };
-
 var setPic = function(p){ 
 	pic = p;
 	console.log(p + " set");
@@ -82,7 +70,6 @@ var setNum = function(p){
 	console.log(p + " set");
 	updateAll();
 };
-
 var updateAll = function(){
 	console.log(num + " " + pic);
 	
@@ -101,14 +88,11 @@ console.log(pics);
 	document.getElementById("numLocation").innerHTML = num;
 	document.getElementById("picLocation").innerHTML = pics;
 };
-
 window.onload = function(){
 	initPicBar();
 	initNumBar();
-
 	updateAll();	
 };
-
 </script>
 
 </head>
