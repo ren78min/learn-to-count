@@ -1,0 +1,131 @@
+<html>
+<head>
+<style>
+.num-button {
+	padding:	10px 10px;
+	text-align: 	center;
+	font-size: 	80px;
+	margin:		5px 5px 5px 5px;
+	width:		100px;
+	height:		150px;
+}
+
+.num-display {
+	text-align:	center;
+	margin:		10px 10px;
+	padding:	10px 10px 10px 10px;
+	font-size:	360px;
+}
+
+.img-button {
+	width:		100px;
+	height:		100px;
+	padding:	10px;
+	text-align:	center;
+}
+
+.img-button img {
+	height:		100px;
+}
+
+.img-display {
+	width:		200px;
+	height:		200px;
+	text-align:	center;
+}
+
+.img-display img {
+	height: 	200px;	
+}
+
+</style>
+
+<script>
+
+var picArray = ["flower.jpg", "sun.png", "apple.jpg", "heart.png", 
+		"star.png", "duck.jpg"];
+
+var pic = picArray[0];
+var num = 1;
+
+var initPicBar = function(){
+	var res = "<table>";
+	for(var i in picArray){
+		res += 	"<tr><td>"+
+			"<div class='img-button'>"+
+			"<img src='"+picArray[i]+
+			"' onclick=setPic('"+picArray[i]+
+			"') /></div></td></tr>";
+	}
+	res += "</table>";
+
+	document.getElementById("picBar").innerHTML = res;
+};
+
+var initNumBar = function(){
+	var res = "<table>";
+        for(var i = 0; i < 10; i++){
+                res += "<td><button class='num-button' onclick=setNum("+i+")>"+i+"</button></td>";
+        }
+	res += "</table>"
+
+        document.getElementById("numBar").innerHTML = res;
+};
+
+var setPic = function(p){ 
+	pic = p;
+	console.log(p + " set");
+	updateAll();
+};
+var setNum = function(p){
+	num = p;
+	console.log(p + " set");
+	updateAll();
+};
+
+var updateAll = function(){
+	console.log(num + " " + pic);
+	
+	var pics="<table>";
+	for(var i = 1; i <= num; i++){
+		if(i%3==1){
+			pics += "<tr>";
+		}
+		pics += "<td><div class='img-display'><img src="+pic+" /></div></td>";
+		if(i%3==0 || i == num){
+			pics += "</tr>";
+		}
+	}
+	pics+="</table>";
+console.log(pics);
+	document.getElementById("numLocation").innerHTML = num;
+	document.getElementById("picLocation").innerHTML = pics;
+};
+
+window.onload = function(){
+	initPicBar();
+	initNumBar();
+
+	updateAll();	
+};
+
+</script>
+
+</head>
+<body>
+<table>
+<tr>
+
+	<td><div id="picBar" ></div></td>
+	
+	<td><div class='num-display' id='numLocation'></div></td>
+
+	<td><div class='img-container' id="picLocation"></div></td>
+	
+</tr>
+</table>
+
+<span id="numBar" />
+
+</body>
+</html>
