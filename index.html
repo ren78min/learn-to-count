@@ -4,9 +4,9 @@
 .num-button {
 	text-align: 	center;
 	font-family:	arial;
-	font-size: 	90px;
-	width:		100px;
-	height:		150px;
+	font-size: 	160px;
+	width:		200px;
+	height:		250px;
 	margin:		4px 4px 4px 4px;
 }
 .num-display {
@@ -56,7 +56,10 @@ var initNumBar = function(){
 	var res = "<table>";
         for(var i = 0; i < 10; i++){
                 res += "<td><button class='num-button' onclick=setNum("+i+")>"+i+"</button></td>";
-        }
+        	if(i == 4){
+			res += "</tr><tr>";
+		}
+	}
 	res += "</table>"
         document.getElementById("numBar").innerHTML = res;
 };
